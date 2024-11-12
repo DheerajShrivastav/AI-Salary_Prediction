@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wage Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            display: block;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Wage Prediction Model</h2>
+        <form action="/predict" method="post">
+            <label for="school">Years of Schooling:</label>
+            <input type="number" name="school" required>
+            
+            <label for="exper">Years of Experience:</label>
+            <input type="number" name="exper" required>
+
+            <label for="union">Union Membership (1 for Yes, 0 for No):</label>
+            <input type="number" name="union" required>
+
+            <label for="ethn">Ethnicity (0 for Other, 1 for Black, 2 for Hispanic):</label>
+            <input type="number" name="ethn" required>
+
+            <label for="maried">Marital Status (1 for Married, 0 for Not Married):</label>
+            <input type="number" name="maried" required>
+
+            <label for="health">Health Status (0 for Unfit, 1 for Fit):</label>
+            <input type="number" name="health" required>
+
+            <label for="industry">Industry:</label>
+            <select name="industry" required>
+                <option value="" disabled selected>Select an industry</option>
+                <option value="0">Business and Repair Service</option>
+                <option value="1">Personal Service</option>
+                <option value="2">Trade</option>
+                <option value="3">Construction</option>
+                <option value="4">Manufacturing</option>
+                <option value="5">Transportation</option>
+                <option value="6">Professional and Related Service</option>
+                <option value="7">Finance</option>
+                <option value="8">Entertainment</option>
+                <option value="9">Public Administration</option>
+                <option value="10">Agricultural</option>
+                <option value="11">Mining</option>
+            </select>
+
+            <label for="occupation">Occupation:</label>
+            <select name="occupation" required>
+                <option value="" disabled selected>Select an occupation</option>
+                <option value="0">Service Workers</option>
+                <option value="1">Craftsmen, Foremen and Kindred</option>
+                <option value="2">Managers, Officials and Proprietors</option>
+                <option value="3">Laborers and Farmers</option>
+                <option value="4">Clerical and Kindred</option>
+                <option value="5">Sales Workers</option>
+                <option value="6">Operatives and Kindred</option>
+                <option value="7">Professional, Technical and Kindred</option>
+                <option value="8">Farm Laborers and Foreman</option>
+            </select>
+
+            <label for="residence">Residence:</label>
+            <select name="residence" required>
+                <option value="" disabled selected>Select a residence</option>
+                <option value="0">North East</option>
+                <option value="1">Not Specified</option> <!-- Representing NaN -->
+                <option value="2">South</option>
+                <option value="3">Northern Central</option>
+                <option value="4">Rural Area</option>
+            </select>
+
+            <button type="submit">Predict Wage</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
