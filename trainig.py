@@ -33,7 +33,7 @@ X = data_encoded[['school', 'exper', 'union', 'ethn', 'maried', 'health', 'indus
 y = data_encoded['wage']
 #data1=X
 #data1.head()
-uni = data.unique()
+uni = data['residence'].unique()
 print(uni)
 
 # Split the data into training and testing sets

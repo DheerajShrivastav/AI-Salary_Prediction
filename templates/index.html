@@ -73,16 +73,28 @@
             <input type="number" name="exper" required>
 
             <label for="union">Union Membership (1 for Yes, 0 for No):</label>
-            <input type="number" name="union" required>
+            <select name="union" required>
+                <option value="1" >Yes</option>
+                <option value="0" >No</option>
+            </select>
 
             <label for="ethn">Ethnicity (0 for Other, 1 for Black, 2 for Hispanic):</label>
-            <input type="number" name="ethn" required>
-
+            <select name="ethn" required>
+                <option value="2" >Hispanic</option>
+                <option value="1" >Black</option>
+                <option value="0" >Other</option>
+            </select>
             <label for="maried">Marital Status (1 for Married, 0 for Not Married):</label>
-            <input type="number" name="maried" required>
+            <select name="maried" required>
+                <option value="1" >Married</option>
+                <option value="0" >Not Married</option>
+            </select>
 
             <label for="health">Health Status (0 for Unfit, 1 for Fit):</label>
-            <input type="number" name="health" required>
+            <select name="health" required>
+                <option value="1" >Fit</option>
+                <option value="0" >Unfit</option>
+            </select>
 
             <label for="industry">Industry:</label>
             <select name="industry" required>
