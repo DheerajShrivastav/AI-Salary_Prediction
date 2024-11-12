@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, render_template
 import pickle
 import numpy as np
@@ -36,4 +37,4 @@ def predict():
     return render_template('index.html', prediction_text=f'Predicted Wage: ${prediction:.2f} per hour')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
